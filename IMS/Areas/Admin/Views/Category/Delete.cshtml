@@ -1,0 +1,31 @@
+﻿@model IMS.Models.Category
+
+<div class="container mt-4">
+
+    <h2 class="text-danger">
+        <i class="bi bi-trash-fill me-2"></i>Delete Category
+    </h2>
+
+    <form asp-controller="Category" asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" disabled class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary ms-2">
+            <i class="bi bi-x-circle"></i> Cancel
+        </a>
+    </form>
+</div>
