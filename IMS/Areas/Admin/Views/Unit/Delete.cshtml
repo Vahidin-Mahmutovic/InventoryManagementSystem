@@ -1,0 +1,25 @@
+﻿@model IMS.Models.Unit
+
+<div class="container mt-4">
+
+    <h2 class="text-danger">
+        <i class="bi bi-trash-fill me-2"></i>Delete Unit
+    </h2>
+
+    <form asp-controller="Unit" asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" disabled />
+        </div>
+
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-controller="Unit" asp-action="Index" class="btn btn-secondary ms-2">
+            <i class="bi bi-x-circle"></i> Cancel
+        </a>
+    </form>
+</div>
