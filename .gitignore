@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # Ignore config files with sensitive info
 appsettings*.json
+
+
+wwwroot/images/
