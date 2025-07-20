@@ -1,0 +1,59 @@
+﻿@model IMS.Models.ViewModels.ProductVM
+
+@{
+    ViewData["Title"] = Model.Product.Id == 0 ? "Create Product" : "Edit Product";
+}
+
+<div class="container mt-4 pb-5">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <input asp-for="Product.Id" type="hidden" />
+        <input asp-for="Product.ImageUrl" type="hidden" />
+
+        <div class="mb-3">
+            <label asp-for="Product.Name"></label>
+            <input asp-for="Product.Name" class="form-control" />
+            <span asp-validation-for="Product.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Product.Description"></label>
+            <textarea asp-for="Product.Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Product.Category"></label>
+            <select asp-for="Product.CategoryId" asp-items="Model.CategoryList" class="form-select">
+                <option value="">--Select Category--</option>
+            </select>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Product.Unit"></label>
+            <select asp-for="Product.UnitId" asp-items="Model.UnitList" class="form-select">
+                <option value="">--Select Unit--</option>
+            </select>
+            <span asp-validation-for="Product.UnitId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label>Image</label>
+            <input type="file" name="file" class="form-control" />
+
+            @if (!string.IsNullOrEmpty(Model.Product.ImageUrl))
+            {
+                <img src="@Model.Product.ImageUrl" width="100" class="mt-2 rounded border" />
+            }
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

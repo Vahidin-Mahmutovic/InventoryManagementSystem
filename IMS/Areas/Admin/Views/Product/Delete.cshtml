@@ -1,0 +1,47 @@
+﻿@model IMS.Models.Product
+
+<form method="post" class="mb-5">
+
+    <input asp-for="Id" hidden />
+
+    <div class="border p-4 mt-4 rounded">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Product</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3 row">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3 row">
+            <label class="p-0">Category</label>
+            <input value="@Model.Category?.Name" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3 row">
+            <label class="p-0">Unit</label>
+            <input value="@Model.Unit?.Name" disabled class="form-control" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="mb-4 row">
+                <label class="p-0">Image</label>
+                <div>
+                    <img src="@Model.ImageUrl" alt="Product Image" style="max-width: 200px;" class="img-thumbnail" />
+                </div>
+            </div>
+        }
+
+        <div class="row mt-3">
+            <div class="col-6 col-md-3 mb-2">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+            </div>
+            <div class="col-6 col-md-3 mb-2">
+                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary form-control">Back To List</a>
+            </div>
+        </div>
+    </div>
+</form>
