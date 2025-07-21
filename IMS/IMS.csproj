@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IMS.DataAccess\IMS.DataAccess.csproj" />
+    <ProjectReference Include="..\IMS.Services\IMS.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

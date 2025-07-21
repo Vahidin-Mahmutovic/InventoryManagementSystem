@@ -9,5 +9,6 @@ namespace IMS.DataAccess.Repository.IRepository
         void Add(T entity);
         void Delete(T entity);
         void DeleteRange(IEnumerable<T> entities);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> filter, string? includeProperties = null);
     }
 }

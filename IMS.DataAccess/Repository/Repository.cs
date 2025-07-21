@@ -64,6 +64,21 @@ namespace IMS.DataAccess.Repository
             return query.ToList();
         }
 
-      
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        {
+            IQueryable<T> query = dbSet.Where(filter);
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
+
+            return query.ToList();
+        }
+
     }
 }
