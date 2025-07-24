@@ -21,6 +21,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IInventoryTransactionService, InventoryTransactionService>();
 
+builder.Services.AddScoped<IStockLevelService, StockLevelService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
