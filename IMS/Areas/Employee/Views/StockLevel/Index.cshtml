@@ -1,0 +1,29 @@
+﻿@model IEnumerable<IMS.Models.ViewModels.StockLevelVM>
+
+@{
+    ViewData["Title"] = "Stock Levels";
+}
+
+<div class="container mt-4 pb-5">
+    <h2 class="text-primary mb-3">Current Stock Levels</h2>
+
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Store</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.StoreName</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
