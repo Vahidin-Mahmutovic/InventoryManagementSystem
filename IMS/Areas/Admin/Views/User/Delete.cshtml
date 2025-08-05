@@ -1,0 +1,39 @@
+﻿@model IMS.Models.ViewModels.UserVM
+
+<div class="container mt-4">
+    <h2 class="text-danger">
+        <i class="bi bi-trash-fill me-2"></i>Delete User
+    </h2>
+
+    <form asp-controller="User" asp-action="Delete" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label"></label>
+            <input asp-for="FirstName" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Role" class="form-label"></label>
+            <input asp-for="Role" disabled class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+        <a asp-action="Index" class="btn btn-secondary ms-2"><i class="bi bi-x-circle"></i> Cancel</a>
+    </form>
+</div>
