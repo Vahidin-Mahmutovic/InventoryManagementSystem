@@ -20,13 +20,15 @@ namespace IMS.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -116,7 +118,22 @@ namespace IMS.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+         
+                        var user = await _userManager.FindByEmailAsync(Input.Email);
+
+                    
+                        if (await _userManager.IsInRoleAsync(user, "Admin"))
+                        {
+                            return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
+                        }
+                        else if (await _userManager.IsInRoleAsync(user, "Employee"))
+                        {
+                            return RedirectToAction("Index", "EmployeeDashboard", new { area = "Employee" });
+                        }
+
+                      
+                        return LocalRedirect("~/");
+                    
                 }
                 if (result.RequiresTwoFactor)
                 {

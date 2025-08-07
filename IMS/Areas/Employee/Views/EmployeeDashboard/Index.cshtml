@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container mt-5">
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+       
+        <div class="col">
+            <a asp-controller="Product" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-box fs-1 mb-2"></i>
+                        <h5 class="card-title">Products</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a asp-controller="InventoryTransaction" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-arrow-left-right fs-1 mb-2"></i>
+                        <h5 class="card-title">Inventory Transactions</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a asp-controller="StockLevel" asp-action="Index" class="text-decoration-none">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up fs-1 mb-2"></i>
+                        <h5 class="card-title">Stock Levels</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
