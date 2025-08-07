@@ -2,12 +2,14 @@
 using IMS.Models.ViewModels;
 using IMS.Services.IServices;
 using IMS.Utility.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IMS.Areas.Employee.Controllers
 {
     [Area("Employee")]
+    [Authorize(Roles = "Employee")]
     public class InventoryTransactionController : Controller
     {
         private readonly IInventoryTransactionService _transactionService;

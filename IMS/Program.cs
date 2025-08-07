@@ -24,8 +24,13 @@ builder.Services.AddScoped<IInventoryTransactionService, InventoryTransactionSer
 
 builder.Services.AddScoped<IStockLevelService, StockLevelService>();
 
-builder.Services.AddRazorPages(); 
+builder.Services.AddRazorPages();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login"; 
+   
+});
 
 var app = builder.Build();
 

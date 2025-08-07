@@ -1,9 +1,11 @@
 ﻿using IMS.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class StockLevelController : Controller
     {
         private readonly IStockLevelService _stockLevelService;
